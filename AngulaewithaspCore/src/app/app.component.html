@@ -1,0 +1,47 @@
+<div>
+  <app-login></app-login>
+
+  <h2>Binding name:{{name}} </h2> 
+
+  <input type="text" [(ngModel)]="name"/>
+
+  <input type="button" value="Click Here" class="btn btn-primary" (click)="myFunc()"/>
+</div>
+
+<h2>Select by colors Array</h2>
+<select  (change)="onChange()">
+  <option *ngFor="let color of colors">{{color}}</option>
+</select>
+
+<input type="button" [value]="logState" (click)="changeLog()"/>
+
+<div *ngIf="isLog; then welcome else error"></div>
+
+<ng-template #welcome>
+  <p class="text-success">Welcome to Our APP</p>
+</ng-template>
+
+<ng-template #error>
+  <p class="text-danger">Please Login in our App</p>
+</ng-template>
+
+
+<div>
+  <h3>Using Pipes</h3>
+  <P>UpperCase Pipe {{ name | uppercase }}</P>
+  <p> Date Pipe {{currentDate  | date:"dd/MM/yyyy" }}</p>
+</div>
+
+
+<div>
+  <h3>Tags List UrL Routing</h3>
+  <ul>
+    <li><a href="">Home</a></li>
+    <li><a [routerLink]="['/client']">Client</a></li>
+    <li><a [routerLink]="['/category']">Category</a></li>
+    <li><a [routerLink]="['/article']">Article</a></li>
+
+  </ul>
+</div>
+
+<router-outlet></router-outlet>
